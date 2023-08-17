@@ -1,52 +1,62 @@
 # SPEA E-538: Environmental Statistics
 
 ## Instructor
-Mallory Barnes, Assistant Professor; email: malbarn@iu.edu; office: MSBII Rm 304
+Mallory Barnes, Assistant Professor
+- **Email:** malbarn@iu.edu
+- **Office:** MSBII Rm 304
 
 ## Teaching Assistants
-Kesondra Key; keyke@iu.edu; Samantha Diedrich, sdiedric@iuk.edu
+- **Kesondra Key**
+  - Email: keyke@iu.edu
+- **Samantha Diedrich**
+  - Email: sdiedric@iuk.edu
 
 ## Class Meeting
-Tuesday/Thursday 1:15pm-2:30pm - PV A201; Recitation 3:00pm-4:15pm - PV A221
+- **Lectures:** Tuesday/Thursday 1:15pm-2:30pm - PV A201
+- **Recitation:** Thursday 3:00pm-4:15pm - PV A221
 
 ## Office Hours
-3-4pm Thursdays, MSBII room 304, or by appointment.
+- **Thursdays:** 3-4pm, MSBII room 304, or by appointment.
 
 ## Course Description
-Data analysis and statistics for environmental research and policy-making. Logic and illogic hypothesis testing with emphasis on power. Sampling and design of experiments. Group comparisons, analysis of variance, regression. Building on these fundamental aspects, Environmental Statistics is a comprehensive course designed to empower your understanding of data analysis, statistics, and more. We will delve into real-world environmental data sets, offering hands-on experience with tools like R and RStudio, and cultivate a data-informed approach for meaningful contributions to environmental research and policy.
+Data analysis and statistics for environmental research and policy-making. This course emphasizes logic and illogic hypothesis testing, with a focus on statistical power. Topics include sampling, experimental design, analysis of variance, and regression. You will gain hands-on experience with tools like R and RStudio and develop a data-informed approach to contribute effectively to environmental research and policy.
 
 ## Learning Outcomes
+
 Upon completion of E538, students should be able to:
 
-- Understand and apply core statistical concepts and techniques within the context of environmental science.
-- Utilize statistical software tools, such as R and RStudio, for data manipulation, exploratory data analysis, and statistical modeling.
-- Interpret outcomes and make informed decisions grounded in statistical evidence within the field of environmental science.
-- Critically evaluate statistical studies in environmental science, identify potential biases, and understand the associated limitations.
-- Communicate statistical findings effectively and apply statistical methods to real-world environmental data sets.
-- Conduct ethically responsible and statistically sound research in the field of environmental science.
+- **Understand and apply core statistical concepts and techniques** within the context of environmental science.
+- **Utilize statistical software tools**, such as R and RStudio, for data manipulation, exploratory data analysis, and statistical modeling.
+- **Interpret outcomes and make informed decisions grounded in statistical evidence** within the field of environmental science.
+- **Critically evaluate statistical studies** in environmental science, identify potential biases, and understand associated limitations.
+- **Communicate statistical findings effectively** and apply statistical methods to real-world environmental data sets.
+- **Conduct ethically responsible and statistically sound research** in the field of environmental science.
+
 
 ## Text
-The main text for this course is an online GitBook written by the instructor that is accessible online. Additional readings, if any, will be posted on Canvas.
+The main text for this course is an online GitBook written by the instructor, accessible online. Additional readings, if any, will be posted on Canvas.
 
 ## Prerequisites
-This course assumes you have taken at least one college-level math course prior to this; however, the course is designed to be accessible to students with math anxiety and works to be as clear as possible. Furthermore, no knowledge of R is required or expected; however, resources to improve coding in R will be provided on Canvas under the supplemental materials module and are strongly encouraged.
+This course assumes you have taken at least one college-level math course prior to this; however, it is designed to be accessible to students with math anxiety and aims to be as clear as possible. No knowledge of R is required or expected; resources to improve coding in R will be provided on Canvas under the supplemental materials module and are strongly encouraged.
+
+---
 
 ## Course Requirements
 
 ### Assignment Types
-- **Recitation Assignments (Weekly Labs):** Weekly hands-on labs using R and RStudio to analyze environmental datasets form the basis for these assignments. They contribute 25% of your final grade. Initiated every Tuesday during recitation sessions, they must be completed individually by Sunday (at 11:59 pm) of the same week. Note that we may grade only certain sections.
-- **Data Analysis Report (Project):** You will select a data set for analysis and write a 5-7 page report, comprehensible to someone with minimal statistical background. Peer-reviewed by classmates, this project aims to promote critical thinking and collaboration and accounts for 15% of your final grade.
-- **Quizzes:** These low-stakes quizzes, conducted at the beginning of most classes (except for weeks with exams), will assess your understanding of the recent content and assigned readings. Comprising 10% of your final grade, their format may vary, including small-group activities. While you cannot make up missed quizzes, you may drop four of them, effectively allowing two weeks of absence without penalty.
-- **Midterm Exam:** This in-class exam, covering the first half of the semester, constitutes 25% of your final grade.
-- **Final Exam:** A comprehensive in-class exam, assessing knowledge and understanding of the entire course content, comprises 25% of your final grade.
+- **Recitation Assignments (Weekly Labs):** Weekly hands-on labs using R and RStudio to analyze environmental datasets. These contribute 25% of your final grade. Labs must be completed individually by Sunday (at 11:59 pm) of the same week.
+- **Data Analysis Report (Project):** Select a data set for analysis and write a 5-7 page report, comprehensible to someone with minimal statistical background. Peer-reviewed by classmates, this project aims to promote critical thinking and collaboration and accounts for 15% of your final grade.
+- **Quizzes:** Low-stakes quizzes assess your understanding of recent content and assigned readings. Comprising 10% of your final grade, their format may vary. Four quiz drops are allowed, effectively allowing two weeks of absence without penalty.
+- **Midterm Exam:** In-class exam covering the first half of the semester, constituting 25% of your final grade.
+- **Final Exam:** Comprehensive in-class exam assessing knowledge of the entire course content, comprising 25% of your final grade.
 
 ### Grading Breakdown
-- Recitation Assignments (Weekly Labs): 25%
-- Group Data Analysis Report: 15%
-- Quizzes: 10%
-- Midterm Exam: 25%
-- Final Exam: 25%
-- Total: 100%
+- **Recitation Assignments (Weekly Labs):** 25%
+- **Group Data Analysis Report:** 15%
+- **Quizzes:** 10%
+- **Midterm Exam:** 25%
+- **Final Exam:** 25%
+- **Total:** 100%
 
 ### Grading Scale
 | Grade | Range       | Grade | Range       |
@@ -58,39 +68,35 @@ This course assumes you have taken at least one college-level math course prior 
 | B-    | < 83% to 80%| D-    | < 63% to 60% |
 | C+    | < 80% to 77%| F     | < 60% to 0%  |
 
-Note on rounding: All final grades are rounded following standard mathematical practices (e.g., 82.5 is rounded to 83 for a B, but 82.4 is rounded to 82 for a B-). Final grades are not negotiable, and any requests for final grade changes for reasons other than calculation errors will be denied.
+*Note on rounding:* All final grades are rounded following standard mathematical practices.
 
-#### Note on rounding
+---
 
 # Course Policies and Expectations
 
 ## Attendance
-- **Consistent Attendance:** Since the topics in this course build upon previous lessons, regular attendance is crucial. Attendance is expected but not taken explicitly. Missing classes may lead to gaps in understanding that can hinder your progress in subsequent modules. Attendance is expected at all scheduled sessions, including lectures and recitation assignments.
-- **Active Participation:** In addition to being present, active participation is encouraged. Engaging with the material, asking questions, participating in discussions, and working collaboratively in group activities not only enriches your learning experience but also fosters a supportive learning community.
-- **Responsibility for Missed Content:** In the event that you must miss a class, it falls on you to review the content that was covered and to consult with classmates to catch up. Please refrain from sending emails inquiring simply about "what did I miss," as these messages are not conducive to meaningful engagement and will not receive a response.
-- **Low-stakes quizzes:** Low-stakes quizzes will be conducted at the beginning of most classes (except weeks with exams). While missed quizzes cannot be made up, students may drop four of them, effectively allowing two weeks of absence without penalty.
-
+- **Consistent Attendance:** Regular attendance is crucial as topics build upon previous lessons. Although not explicitly taken, missing classes may lead to gaps in understanding.
+- **Active Participation:** Engage with the material, ask questions, participate in discussions, and work collaboratively. It enriches your learning experience and fosters a supportive learning community.
+- **Responsibility for Missed Content:** Review content from missed classes and consult classmates to catch up. Avoid sending emails inquiring about missed content.
 
 ## Assignment Policies
-- **Makeup Exams:** Taking exams as scheduled is vital. Make-up exams must be requested one week prior to the exam date and are only for unavoidable conflicts or genuine illness. In cases of illness, inform the instructor and TAs beforehand. Abuse of this policy will not be tolerated. Should makeup exams be necessary, they will be arranged within one week of the original date, and the exam format may be altered significantly.
-- **Late Assignments:** While late assignments are generally not accepted, there is a 24-hour “grace period” after the submission deadline without penalties. After this period, the assignment portal will close.
-- **Late Withdrawal:** The auto-W deadline is NO LONGER THE LAST DAY OF CLASS (as it was during and immediately post-Covid).  After the auto-W deadline, withdrawal will be significantly limited, and you will need permission to withdraw and must meet requirements established by O’Neill. The Auto-W deadline for a given semester can be found [here](https://calendars.registrar.indiana.edu/official-calendar/)
+- **Makeup Exams:** Make-up exams must be requested a week prior to the exam date for unavoidable conflicts or genuine illness. In cases of illness, inform the instructor and TAs beforehand.
+- **Late Assignments:** Late assignments are generally not accepted, with a 24-hour “grace period” after the submission deadline.
+- **Late Withdrawal:** The auto-W deadline is NO LONGER THE LAST DAY OF CLASS. After the auto-W deadline, withdrawal will be significantly limited, and you will need permission to withdraw and must meet requirements established by O’Neill.
 
 ## Technology and Tools
-- **Technology Requirements:** You will be running R and R Studio on your personal laptop computers. Mac, Windows, and Linux computers should all be capable of running the software needed. There will be one (ungraded) lab assignment at the beginning of the semester designed to assist you with the software installation.
-- **Communications and Course Materials:** Canvas will be the primary platform for disseminating course material, assignments, and updates. Please make sure to check it regularly.
-- **Electronic Etiquette:** When using technology in class (including laptops, tablets, and cellphones), please ensure that it does not distract others or detract from the learning environment.
-- **Familiarity with Software:** The course involves hands-on work with R and RStudio. Familiarizing yourself with these tools early in the course will support your success in lab sessions and assignments.
-- **Responsible Use of Technology:** Laptops and other devices should be used responsibly during class. Misuse can distract you and others around you.
-- **Classroom policy on technology:**Laptops are required for recitation You are responsible for technology use, and disruptions will not be tolerated. In line with university recommendations, I will have my phone active for campus alerts, and it is crucial that instructors are informed immediately if there is an alert.
+- **Technology Requirements:** You will run R and R Studio on your personal laptop computers. There will be an ungraded lab assignment at the beginning of the semester to assist with software installation.
+- **Communications and Course Materials:** Canvas will be the primary platform for course material, assignments, and updates.
+- **Electronic Etiquette:** Use devices responsibly during class. Misuse can distract you and others.
+- **Classroom Policy on Technology:** Laptops are required for recitation. Instructors should be informed immediately if there is an alert.
 
 ## Preparation and Effort
-- **Preparation for Classes:** Success in this course requires regular review of lecture notes, completion of assigned readings, and practice with problems and examples. Coming to class prepared will enable you to actively participate and grasp complex concepts.
-- **Effort and Engagement:** Persistence and effort are key to mastering statistical concepts. Embrace challenges as opportunities for growth, seek help when needed, and invest time in understanding the material deeply.
-- **Collaboration and Integrity:** While collaboration is encouraged in group activities, adherence to academic integrity principles is paramount. Ensure that all submitted work reflects your understanding and effort.
+- **Preparation for Classes:** Regularly review lecture notes, complete assigned readings, and practice problems and examples.
+- **Effort and Engagement:** Embrace challenges as opportunities for growth. Seek help when needed and invest time in understanding the material deeply.
+- **Collaboration and Integrity:** Collaboration is encouraged, but adherence to academic integrity principles is paramount.
 
 ## Use of Artificial Intelligence (Such as ChatGPT)
-In this course, we recognize that artificial intelligence, such as ChatGPT, can be a valuable resource for resolving coding and syntax challenges. The primary focus of this course is to cultivate your understanding of statistical concepts, rather than to develop expertise in coding. Although coding is a tool used in statistical analysis, it is not the main learning objective. Even seasoned coders frequently refer to online resources for assistance, and you are encouraged to do the same as needed. My role as your professor is to guide you in the realm of statistics, not to provide technical support for coding issues.
+In this course, artificial intelligence, such as ChatGPT, can be valuable for resolving coding and syntax challenges. Coding is a tool used in statistical analysis, but understanding statistical concepts is the main objective.
 
 ### Permitted Uses:
 - **Coding Assistance:** Utilizing AI, such as ChatGPT, to assist with coding, particularly with syntax issues, can be efficient. This approach is not only acceptable but also encouraged insofar as it facilitates your focus on the statistical content of the course.
@@ -98,15 +104,18 @@ In this course, we recognize that artificial intelligence, such as ChatGPT, can 
 ### Prohibited Uses:
 - **Writing Assignments:** Using AI to complete writing assignments is prohibited. If you do use AI for this purpose, you will be committing plagiarism* and will be subject to penalties in this class and sanctions by [Indiana University](https://studentcode.iu.edu/responsibilities/academic-misconduct.html).
 
-##*Plagiarism:*##
+## **Plagiarism:**
 Plagiarism is defined as presenting someone else’s work, including the work of other students, as one’s own. Any ideas or materials taken from another source for either written or oral use must be fully acknowledged, unless the information is common knowledge. What is considered “common knowledge” may differ from course to course.
 
-##**IU's Grading Policies:**## [https://policies.iu.edu/policies/aca-66-grades-and-grading/index.html](https://policies.iu.edu/policies/aca-66-grades-and-grading/index.html)
+## **IU's Grading Policies:** 
+[https://policies.iu.edu/policies/aca-66-grades-and-grading/index.html](https://policies.iu.edu/policies/aca-66-grades-and-grading/index.html)
 
-##**Academic Integrity:**##
+## **Academic Integrity:**
 Student responsibilities are detailed at: [https://studentcode.iu.edu/](https://studentcode.iu.edu/)
 
 Your commitment to these principles will be instrumental in your success. If you have concerns or need support, please reach out. Your success is a shared goal, and open communication will guide us in achieving it.
+
+---
 
 # Schedule of Assignments
 
@@ -131,6 +140,8 @@ Your commitment to these principles will be instrumental in your success. If you
 | 16   | Finals Week  | Final Exam                                | N/A                                            | N/A                                  |               | Final Exam: Thursday Dec 14th from 12:40-2:40pm         |
 
 * The above schedule is subject to limited changes in the event of extenuating circumstances.
+
+---
 
 ## Summary of Important Dates
 Refer to the separate project document for detailed milestones, including the dates of the project proposal, hypothesis formation, advanced data analysis, peer review, and the final report.

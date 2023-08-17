@@ -11,27 +11,38 @@
 
 
 
-<title>Syllabus</title>
+<title>Syllabus.knit</title>
 
-<script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
+<script src="site_libs/header-attrs-2.23/header-attrs.js"></script>
+<script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <link href="site_libs/bootstrap-3.3.5/css/bootstrap.min.css" rel="stylesheet" />
 <script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
 <script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
 <script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
-<script src="site_libs/jqueryui-1.11.4/jquery-ui.min.js"></script>
-<link href="site_libs/tocify-1.9.1/jquery.tocify.css" rel="stylesheet" />
-<script src="site_libs/tocify-1.9.1/jquery.tocify.js"></script>
+<style>h1 {font-size: 34px;}
+       h1.title {font-size: 38px;}
+       h2 {font-size: 30px;}
+       h3 {font-size: 24px;}
+       h4 {font-size: 18px;}
+       h5 {font-size: 16px;}
+       h6 {font-size: 12px;}
+       code {color: inherit; background-color: rgba(0, 0, 0, 0.04);}
+       pre:not([class]) { background-color: white }</style>
 <script src="site_libs/navigation-1.1/tabsets.js"></script>
 <link href="site_libs/highlightjs-9.12.0/default.css" rel="stylesheet" />
 <script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
 
-<style type="text/css">code{white-space: pre;}</style>
 <style type="text/css">
-  pre:not([class]) {
-    background-color: white;
-  }
-</style>
+  code{white-space: pre-wrap;}
+  span.smallcaps{font-variant: small-caps;}
+  span.underline{text-decoration: underline;}
+  div.column{display: inline-block; vertical-align: top; width: 50%;}
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+  ul.task-list{list-style: none;}
+    </style>
+
+<style type="text/css">code{white-space: pre;}</style>
 <script type="text/javascript">
 if (window.hljs) {
   hljs.configure({languages: []});
@@ -44,32 +55,8 @@ if (window.hljs) {
 
 
 
-<style type="text/css">
-h1 {
-  font-size: 34px;
-}
-h1.title {
-  font-size: 38px;
-}
-h2 {
-  font-size: 30px;
-}
-h3 {
-  font-size: 24px;
-}
-h4 {
-  font-size: 18px;
-}
-h5 {
-  font-size: 16px;
-}
-h6 {
-  font-size: 12px;
-}
-.table th:not([align]) {
-  text-align: left;
-}
-</style>
+
+
 
 
 
@@ -79,10 +66,6 @@ h6 {
   max-width: 940px;
   margin-left: auto;
   margin-right: auto;
-}
-code {
-  color: inherit;
-  background-color: rgba(0, 0, 0, 0.04);
 }
 img {
   max-width:100%;
@@ -99,40 +82,16 @@ button.code-folding-btn:focus {
 summary {
   display: list-item;
 }
+details > summary > p:only-child {
+  display: inline;
+}
+pre code {
+  padding: 0;
+}
 </style>
 
 
 <style type="text/css">
-/* padding for bootstrap navbar */
-body {
-  padding-top: 51px;
-  padding-bottom: 40px;
-}
-/* offset scroll position for anchor links (for fixed navbar)  */
-.section h1 {
-  padding-top: 56px;
-  margin-top: -56px;
-}
-.section h2 {
-  padding-top: 56px;
-  margin-top: -56px;
-}
-.section h3 {
-  padding-top: 56px;
-  margin-top: -56px;
-}
-.section h4 {
-  padding-top: 56px;
-  margin-top: -56px;
-}
-.section h5 {
-  padding-top: 56px;
-  margin-top: -56px;
-}
-.section h6 {
-  padding-top: 56px;
-  margin-top: -56px;
-}
 .dropdown-submenu {
   position: relative;
 }
@@ -160,7 +119,7 @@ body {
   margin-right: -10px;
 }
 .dropdown-submenu:hover>a:after {
-  border-left-color: #ffffff;
+  border-left-color: #adb5bd;
 }
 .dropdown-submenu.pull-left {
   float: none;
@@ -172,7 +131,7 @@ body {
 }
 </style>
 
-<script>
+<script type="text/javascript">
 // manage active state of menu based on current page
 $(document).ready(function () {
   // active menu anchor
@@ -182,11 +141,28 @@ $(document).ready(function () {
     href = "index.html";
   var menuAnchor = $('a[href="' + href + '"]');
 
-  // mark it active
-  menuAnchor.parent().addClass('active');
+  // mark the anchor link active (and if it's in a dropdown, also mark that active)
+  var dropdown = menuAnchor.closest('li.dropdown');
+  if (window.bootstrap) { // Bootstrap 4+
+    menuAnchor.addClass('active');
+    dropdown.find('> .dropdown-toggle').addClass('active');
+  } else { // Bootstrap 3
+    menuAnchor.parent().addClass('active');
+    dropdown.addClass('active');
+  }
 
-  // if it's got a parent navbar menu mark it active as well
-  menuAnchor.closest('li.dropdown').addClass('active');
+  // Navbar adjustments
+  var navHeight = $(".navbar").first().height() + 15;
+  var style = document.createElement('style');
+  var pt = "padding-top: " + navHeight + "px; ";
+  var mt = "margin-top: -" + navHeight + "px; ";
+  var css = "";
+  // offset scroll position for anchor links (for fixed navbar)
+  for (var i = 1; i <= 6; i++) {
+    css += ".section h" + i + "{ " + pt + mt + "}\n";
+  }
+  style.innerHTML = "body {" + pt + "padding-bottom: 40px; }\n" + css;
+  document.head.appendChild(style);
 });
 </script>
 
@@ -198,13 +174,12 @@ $(document).ready(function () {
   max-height: 500px;
   min-height: 44px;
   overflow-y: auto;
-  background: white;
   border: 1px solid #ddd;
   border-radius: 4px;
 }
 
-.tabset-dropdown > .nav-tabs > li.active:before {
-  content: "";
+.tabset-dropdown > .nav-tabs > li.active:before, .tabset-dropdown > .nav-tabs.nav-tabs-open:before {
+  content: "\e259";
   font-family: 'Glyphicons Halflings';
   display: inline-block;
   padding: 10px;
@@ -212,16 +187,9 @@ $(document).ready(function () {
 }
 
 .tabset-dropdown > .nav-tabs.nav-tabs-open > li.active:before {
-  content: "&#xe258;";
-  border: none;
-}
-
-.tabset-dropdown > .nav-tabs.nav-tabs-open:before {
-  content: "";
+  content: "\e258";
   font-family: 'Glyphicons Halflings';
-  display: inline-block;
-  padding: 10px;
-  border-right: 1px solid #ddd;
+  border: none;
 }
 
 .tabset-dropdown > .nav-tabs > li.active {
@@ -251,69 +219,6 @@ $(document).ready(function () {
 
 
 
-<style type="text/css">
-
-#TOC {
-  margin: 25px 0px 20px 0px;
-}
-@media (max-width: 768px) {
-#TOC {
-  position: relative;
-  width: 100%;
-}
-}
-
-@media print {
-.toc-content {
-  /* see https://github.com/w3c/csswg-drafts/issues/4434 */
-  float: right;
-}
-}
-
-.toc-content {
-  padding-left: 30px;
-  padding-right: 40px;
-}
-
-div.main-container {
-  max-width: 1200px;
-}
-
-div.tocify {
-  width: 20%;
-  max-width: 260px;
-  max-height: 85%;
-}
-
-@media (min-width: 768px) and (max-width: 991px) {
-  div.tocify {
-    width: 25%;
-  }
-}
-
-@media (max-width: 767px) {
-  div.tocify {
-    width: 100%;
-    max-width: none;
-  }
-}
-
-.tocify ul, .tocify li {
-  line-height: 20px;
-}
-
-.tocify-subheader .tocify-item {
-  font-size: 0.90em;
-}
-
-.tocify .list-group-item {
-  border-radius: 0px;
-}
-
-
-</style>
-
-
 
 </head>
 
@@ -323,27 +228,17 @@ div.tocify {
 <div class="container-fluid main-container">
 
 
-<!-- setup 3col/9col grid for toc_float and main content  -->
-<div class="row-fluid">
-<div class="col-xs-12 col-sm-4 col-md-3">
-<div id="TOC" class="tocify">
-</div>
-</div>
-
-<div class="toc-content col-xs-12 col-sm-8 col-md-9">
-
-
 
 
 <div class="navbar navbar-default  navbar-fixed-top" role="navigation">
   <div class="container">
     <div class="navbar-header">
-      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-bs-toggle="collapse" data-target="#navbar" data-bs-target="#navbar">
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="index.html">Psyc 3400</a>
+      <a class="navbar-brand" href="index.html">SPEA E-538</a>
     </div>
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
@@ -373,930 +268,506 @@ div.tocify {
   </div><!--/.container -->
 </div><!--/.navbar -->
 
-<div class="fluid-row" id="header">
+<div id="header">
 
 
 
-<h1 class="title toc-ignore">Syllabus</h1>
 
 </div>
 
 
-<div id="statistical-methods-in-psychological-research-psyc-3400" class="section level3">
-<h3>Statistical Methods in Psychological Research (PSYC 3400)</h3>
+<div id="spea-e-538-environmental-statistics" class="section level1">
+<h1>SPEA E-538: Environmental Statistics</h1>
+<div id="instructor" class="section level2">
+<h2>Instructor</h2>
+<p>Mallory Barnes, Assistant Professor - <strong>Email:</strong> <a
+href="mailto:malbarn@iu.edu" class="email">malbarn@iu.edu</a> -
+<strong>Office:</strong> MSBII Rm 304</p>
 </div>
-<div id="instructor-info" class="section level3">
-<h3>Instructor Info</h3>
-<p>Lectures</p>
+<div id="teaching-assistants" class="section level2">
+<h2>Teaching Assistants</h2>
 <ul>
-<li>M,W 11:00am-12:15pm RM: Whitehead 222</li>
-</ul>
-<p>Instructor</p>
+<li><strong>Kesondra Key</strong>
 <ul>
-<li>Dr. Matt Crump 4401B James Hall</li>
-<li>Office hours: by appointment</li>
-<li>Office phone: 718-951-5000 x. 6068</li>
-<li><a href="mailto:mcrump@brooklyn.cuny.edu" class="email">mcrump@brooklyn.cuny.edu</a></li>
+<li>Email: <a href="mailto:keyke@iu.edu"
+class="email">keyke@iu.edu</a></li>
+</ul></li>
+<li><strong>Samantha Diedrich</strong>
+<ul>
+<li>Email: <a href="mailto:sdiedric@iuk.edu"
+class="email">sdiedric@iuk.edu</a></li>
+</ul></li>
 </ul>
+</div>
+<div id="class-meeting" class="section level2">
+<h2>Class Meeting</h2>
+<ul>
+<li><strong>Lectures:</strong> Tuesday/Thursday 1:15pm-2:30pm - PV
+A201</li>
+<li><strong>Recitation:</strong> Thursday 3:00pm-4:15pm - PV A221</li>
+</ul>
+</div>
+<div id="office-hours" class="section level2">
+<h2>Office Hours</h2>
+<ul>
+<li><strong>Thursdays:</strong> 3-4pm, MSBII room 304, or by
+appointment.</li>
+</ul>
+</div>
+<div id="course-description" class="section level2">
+<h2>Course Description</h2>
+<p>Data analysis and statistics for environmental research and
+policy-making. This course emphasizes logic and illogic hypothesis
+testing, with a focus on statistical power. Topics include sampling,
+experimental design, analysis of variance, and regression. You will gain
+hands-on experience with tools like R and RStudio and develop a
+data-informed approach to contribute effectively to environmental
+research and policy.</p>
+</div>
+<div id="learning-outcomes" class="section level2">
+<h2>Learning Outcomes</h2>
+<p>Upon completion of E538, students should be able to:</p>
+<ul>
+<li><strong>Understand and apply core statistical concepts and
+techniques</strong> within the context of environmental science.</li>
+<li><strong>Utilize statistical software tools</strong>, such as R and
+RStudio, for data manipulation, exploratory data analysis, and
+statistical modeling.</li>
+<li><strong>Interpret outcomes and make informed decisions grounded in
+statistical evidence</strong> within the field of environmental
+science.</li>
+<li><strong>Critically evaluate statistical studies</strong> in
+environmental science, identify potential biases, and understand
+associated limitations.</li>
+<li><strong>Communicate statistical findings effectively</strong> and
+apply statistical methods to real-world environmental data sets.</li>
+<li><strong>Conduct ethically responsible and statistically sound
+research</strong> in the field of environmental science.</li>
+</ul>
+</div>
+<div id="text" class="section level2">
+<h2>Text</h2>
+<p>The main text for this course is an online GitBook written by the
+instructor, accessible online. Additional readings, if any, will be
+posted on Canvas.</p>
+</div>
+<div id="prerequisites" class="section level2">
+<h2>Prerequisites</h2>
+<p>This course assumes you have taken at least one college-level math
+course prior to this; however, it is designed to be accessible to
+students with math anxiety and aims to be as clear as possible. No
+knowledge of R is required or expected; resources to improve coding in R
+will be provided on Canvas under the supplemental materials module and
+are strongly encouraged.</p>
 <hr />
 </div>
-<div id="lecture-and-lab-info" class="section level3">
-<h3>Lecture and Lab Info</h3>
+<div id="course-requirements" class="section level2">
+<h2>Course Requirements</h2>
+<div id="assignment-types" class="section level3">
+<h3>Assignment Types</h3>
+<ul>
+<li><strong>Recitation Assignments (Weekly Labs):</strong> Weekly
+hands-on labs using R and RStudio to analyze environmental datasets.
+These contribute 25% of your final grade. Labs must be completed
+individually by Sunday (at 11:59 pm) of the same week.</li>
+<li><strong>Data Analysis Report (Project):</strong> Select a data set
+for analysis and write a 5-7 page report, comprehensible to someone with
+minimal statistical background. Peer-reviewed by classmates, this
+project aims to promote critical thinking and collaboration and accounts
+for 15% of your final grade.</li>
+<li><strong>Quizzes:</strong> Low-stakes quizzes assess your
+understanding of recent content and assigned readings. Comprising 10% of
+your final grade, their format may vary. Four quiz drops are allowed,
+effectively allowing two weeks of absence without penalty.</li>
+<li><strong>Midterm Exam:</strong> In-class exam covering the first half
+of the semester, constituting 25% of your final grade.</li>
+<li><strong>Final Exam:</strong> Comprehensive in-class exam assessing
+knowledge of the entire course content, comprising 25% of your final
+grade.</li>
+</ul>
+</div>
+<div id="grading-breakdown" class="section level3">
+<h3>Grading Breakdown</h3>
+<ul>
+<li><strong>Recitation Assignments (Weekly Labs):</strong> 25%</li>
+<li><strong>Group Data Analysis Report:</strong> 15%</li>
+<li><strong>Quizzes:</strong> 10%</li>
+<li><strong>Midterm Exam:</strong> 25%</li>
+<li><strong>Final Exam:</strong> 25%</li>
+<li><strong>Total:</strong> 100%</li>
+</ul>
+</div>
+<div id="grading-scale" class="section level3">
+<h3>Grading Scale</h3>
 <table>
 <thead>
 <tr class="header">
-<th align="left">Instructor</th>
-<th align="left">Class</th>
-<th align="right">CODE</th>
-<th align="left">DEPT</th>
-<th align="right">COURSE</th>
-<th align="left">SECT</th>
-<th align="left">DAY</th>
-<th align="left">LOCATION</th>
-<th align="left">TIMES</th>
-<th align="left">Email</th>
+<th>Grade</th>
+<th>Range</th>
+<th>Grade</th>
+<th>Range</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td align="left">Crump, Matthew</td>
-<td align="left">Lecture</td>
-<td align="right">29989</td>
-<td align="left">PSYC.</td>
-<td align="right">3400</td>
-<td align="left">MEAL</td>
-<td align="left">M,W</td>
-<td align="left">Whitehead 222</td>
-<td align="left">11:00AM - 12:15PM</td>
-<td align="left"><a href="mailto:mcrump@brooklyn.cuny.edu" class="email">mcrump@brooklyn.cuny.edu</a></td>
+<td>A</td>
+<td>100% to 93%</td>
+<td>C</td>
+<td>&lt; 77% to 73%</td>
 </tr>
 <tr class="even">
-<td align="left">Crump, Matthew</td>
-<td align="left">Lecture</td>
-<td align="right">29991</td>
-<td align="left">PSYC.</td>
-<td align="right">3400</td>
-<td align="left">MEBL</td>
-<td align="left">M,W</td>
-<td align="left">Whitehead 222</td>
-<td align="left">11:00AM - 12:15PM</td>
-<td align="left"><a href="mailto:mcrump@brooklyn.cuny.edu" class="email">mcrump@brooklyn.cuny.edu</a></td>
+<td>A-</td>
+<td>&lt; 93% to 90%</td>
+<td>C-</td>
+<td>&lt; 73% to 70%</td>
 </tr>
 <tr class="odd">
-<td align="left">Crump, Matthew</td>
-<td align="left">Lecture</td>
-<td align="right">29993</td>
-<td align="left">PSYC.</td>
-<td align="right">3400</td>
-<td align="left">MECL</td>
-<td align="left">M,W</td>
-<td align="left">Whitehead 222</td>
-<td align="left">11:00AM - 12:15PM</td>
-<td align="left"><a href="mailto:mcrump@brooklyn.cuny.edu" class="email">mcrump@brooklyn.cuny.edu</a></td>
+<td>B+</td>
+<td>&lt; 90% to 87%</td>
+<td>D</td>
+<td>&lt; 70% to 67%</td>
 </tr>
 <tr class="even">
-<td align="left">Crump, Matthew</td>
-<td align="left">Lecture</td>
-<td align="right">29995</td>
-<td align="left">PSYC.</td>
-<td align="right">3400</td>
-<td align="left">MEDL</td>
-<td align="left">M,W</td>
-<td align="left">Whitehead 222</td>
-<td align="left">11:00AM - 12:15PM</td>
-<td align="left"><a href="mailto:mcrump@brooklyn.cuny.edu" class="email">mcrump@brooklyn.cuny.edu</a></td>
+<td>B</td>
+<td>&lt; 87% to 83%</td>
+<td>D+</td>
+<td>&lt; 67% to 63%</td>
 </tr>
 <tr class="odd">
-<td align="left">Crump, Matthew</td>
-<td align="left">Lecture</td>
-<td align="right">29997</td>
-<td align="left">PSYC.</td>
-<td align="right">3400</td>
-<td align="left">MEEL</td>
-<td align="left">M,W</td>
-<td align="left">Whitehead 222</td>
-<td align="left">11:00AM - 12:15PM</td>
-<td align="left"><a href="mailto:mcrump@brooklyn.cuny.edu" class="email">mcrump@brooklyn.cuny.edu</a></td>
+<td>B-</td>
+<td>&lt; 83% to 80%</td>
+<td>D-</td>
+<td>&lt; 63% to 60%</td>
 </tr>
 <tr class="even">
-<td align="left">Crump, Matthew</td>
-<td align="left">Lecture</td>
-<td align="right">30004</td>
-<td align="left">PSYC.</td>
-<td align="right">3400</td>
-<td align="left">MEFL</td>
-<td align="left">M,W</td>
-<td align="left">Whitehead 222</td>
-<td align="left">11:00AM - 12:15PM</td>
-<td align="left"><a href="mailto:mcrump@brooklyn.cuny.edu" class="email">mcrump@brooklyn.cuny.edu</a></td>
-</tr>
-<tr class="odd">
-<td align="left">Stone, Shira</td>
-<td align="left">Lab</td>
-<td align="right">29990</td>
-<td align="left">PSYC.</td>
-<td align="right">3400</td>
-<td align="left">MEAB</td>
-<td align="left">M</td>
-<td align="left">James 4607</td>
-<td align="left">12:20PM - 2:10PM</td>
-<td align="left"><a href="mailto:Shira623@gmail.com" class="email">Shira623@gmail.com</a></td>
-</tr>
-<tr class="even">
-<td align="left">Alhazmi, Fahd</td>
-<td align="left">Lab</td>
-<td align="right">29992</td>
-<td align="left">PSYC.</td>
-<td align="right">3400</td>
-<td align="left">MEBB</td>
-<td align="left">M</td>
-<td align="left">James 5201</td>
-<td align="left">12:20PM - 2:10PM</td>
-<td align="left"><a href="mailto:falhazmi@gradcenter.cuny.edu" class="email">falhazmi@gradcenter.cuny.edu</a></td>
-</tr>
-<tr class="odd">
-<td align="left">Alhazmi, Fahd</td>
-<td align="left">Lab</td>
-<td align="right">29994</td>
-<td align="left">PSYC.</td>
-<td align="right">3400</td>
-<td align="left">MECB</td>
-<td align="left">W</td>
-<td align="left">James 4607</td>
-<td align="left">12:20PM - 2:10PM</td>
-<td align="left"><a href="mailto:falhazmi@gradcenter.cuny.edu" class="email">falhazmi@gradcenter.cuny.edu</a></td>
-</tr>
-<tr class="even">
-<td align="left">Anderson, Kyle</td>
-<td align="left">Lab</td>
-<td align="right">29996</td>
-<td align="left">PSYC.</td>
-<td align="right">3400</td>
-<td align="left">MEDB</td>
-<td align="left">W</td>
-<td align="left">James 5201</td>
-<td align="left">12:20PM - 2:10PM</td>
-<td align="left"><a href="mailto:kanderson1@gradcenter.cuny.edu" class="email">kanderson1@gradcenter.cuny.edu</a></td>
-</tr>
-<tr class="odd">
-<td align="left">Stone, Shira</td>
-<td align="left">Lab</td>
-<td align="right">29998</td>
-<td align="left">PSYC.</td>
-<td align="right">3400</td>
-<td align="left">MEEB</td>
-<td align="left">F</td>
-<td align="left">James 4607</td>
-<td align="left">09:00AM - 10:50AM</td>
-<td align="left"><a href="mailto:Shira623@gmail.com" class="email">Shira623@gmail.com</a></td>
-</tr>
-<tr class="even">
-<td align="left">Stone, Shira</td>
-<td align="left">Lab</td>
-<td align="right">30005</td>
-<td align="left">PSYC.</td>
-<td align="right">3400</td>
-<td align="left">MEFB</td>
-<td align="left">F</td>
-<td align="left">James 4607</td>
-<td align="left">11:00AM - 12:50AM</td>
-<td align="left"><a href="mailto:Shira623@gmail.com" class="email">Shira623@gmail.com</a></td>
+<td>C+</td>
+<td>&lt; 80% to 77%</td>
+<td>F</td>
+<td>&lt; 60% to 0%</td>
 </tr>
 </tbody>
 </table>
+<p><em>Note on rounding:</em> All final grades are rounded following
+standard mathematical practices.</p>
 <hr />
 </div>
-<div id="lecture-schedule" class="section level3">
-<h3>Lecture Schedule</h3>
-<table>
+</div>
+</div>
+<div id="course-policies-and-expectations" class="section level1">
+<h1>Course Policies and Expectations</h1>
+<div id="attendance" class="section level2">
+<h2>Attendance</h2>
+<ul>
+<li><strong>Consistent Attendance:</strong> Regular attendance is
+crucial as topics build upon previous lessons. Although not explicitly
+taken, missing classes may lead to gaps in understanding.</li>
+<li><strong>Active Participation:</strong> Engage with the material, ask
+questions, participate in discussions, and work collaboratively. It
+enriches your learning experience and fosters a supportive learning
+community.</li>
+<li><strong>Responsibility for Missed Content:</strong> Review content
+from missed classes and consult classmates to catch up. Avoid sending
+emails inquiring about missed content.</li>
+</ul>
+</div>
+<div id="assignment-policies" class="section level2">
+<h2>Assignment Policies</h2>
+<ul>
+<li><strong>Makeup Exams:</strong> Make-up exams must be requested a
+week prior to the exam date for unavoidable conflicts or genuine
+illness. In cases of illness, inform the instructor and TAs
+beforehand.</li>
+<li><strong>Late Assignments:</strong> Late assignments are generally
+not accepted, with a 24-hour “grace period” after the submission
+deadline.</li>
+<li><strong>Late Withdrawal:</strong> The auto-W deadline is NO LONGER
+THE LAST DAY OF CLASS. After the auto-W deadline, withdrawal will be
+significantly limited, and you will need permission to withdraw and must
+meet requirements established by O’Neill.</li>
+</ul>
+</div>
+<div id="technology-and-tools" class="section level2">
+<h2>Technology and Tools</h2>
+<ul>
+<li><strong>Technology Requirements:</strong> You will run R and R
+Studio on your personal laptop computers. There will be an ungraded lab
+assignment at the beginning of the semester to assist with software
+installation.</li>
+<li><strong>Communications and Course Materials:</strong> Canvas will be
+the primary platform for course material, assignments, and updates.</li>
+<li><strong>Electronic Etiquette:</strong> Use devices responsibly
+during class. Misuse can distract you and others.</li>
+<li><strong>Classroom Policy on Technology:</strong> Laptops are
+required for recitation. Instructors should be informed immediately if
+there is an alert.</li>
+</ul>
+</div>
+<div id="preparation-and-effort" class="section level2">
+<h2>Preparation and Effort</h2>
+<ul>
+<li><strong>Preparation for Classes:</strong> Regularly review lecture
+notes, complete assigned readings, and practice problems and
+examples.</li>
+<li><strong>Effort and Engagement:</strong> Embrace challenges as
+opportunities for growth. Seek help when needed and invest time in
+understanding the material deeply.</li>
+<li><strong>Collaboration and Integrity:</strong> Collaboration is
+encouraged, but adherence to academic integrity principles is
+paramount.</li>
+</ul>
+</div>
+<div id="use-of-artificial-intelligence-such-as-chatgpt"
+class="section level2">
+<h2>Use of Artificial Intelligence (Such as ChatGPT)</h2>
+<p>In this course, artificial intelligence, such as ChatGPT, can be
+valuable for resolving coding and syntax challenges. Coding is a tool
+used in statistical analysis, but understanding statistical concepts is
+the main objective.</p>
+<div id="permitted-uses" class="section level3">
+<h3>Permitted Uses:</h3>
+<ul>
+<li><strong>Coding Assistance:</strong> Utilizing AI, such as ChatGPT,
+to assist with coding, particularly with syntax issues, can be
+efficient. This approach is not only acceptable but also encouraged
+insofar as it facilitates your focus on the statistical content of the
+course.</li>
+</ul>
+</div>
+<div id="prohibited-uses" class="section level3">
+<h3>Prohibited Uses:</h3>
+<ul>
+<li><strong>Writing Assignments:</strong> Using AI to complete writing
+assignments is prohibited. If you do use AI for this purpose, you will
+be committing plagiarism* and will be subject to penalties in this class
+and sanctions by <a
+href="https://studentcode.iu.edu/responsibilities/academic-misconduct.html">Indiana
+University</a>.</li>
+</ul>
+</div>
+</div>
+<div id="plagiarism" class="section level2">
+<h2><strong>Plagiarism:</strong></h2>
+<p>Plagiarism is defined as presenting someone else’s work, including
+the work of other students, as one’s own. Any ideas or materials taken
+from another source for either written or oral use must be fully
+acknowledged, unless the information is common knowledge. What is
+considered “common knowledge” may differ from course to course.</p>
+</div>
+<div id="ius-grading-policies" class="section level2">
+<h2><strong>IU’s Grading Policies:</strong></h2>
+<p><a
+href="https://policies.iu.edu/policies/aca-66-grades-and-grading/index.html">https://policies.iu.edu/policies/aca-66-grades-and-grading/index.html</a></p>
+</div>
+<div id="academic-integrity" class="section level2">
+<h2><strong>Academic Integrity:</strong></h2>
+<p>Student responsibilities are detailed at: <a
+href="https://studentcode.iu.edu/">https://studentcode.iu.edu/</a></p>
+<p>Your commitment to these principles will be instrumental in your
+success. If you have concerns or need support, please reach out. Your
+success is a shared goal, and open communication will guide us in
+achieving it.</p>
+<hr />
+</div>
+</div>
+<div id="schedule-of-assignments" class="section level1">
+<h1>Schedule of Assignments</h1>
+<table style="width:100%;">
+<colgroup>
+<col width="2%" />
+<col width="6%" />
+<col width="19%" />
+<col width="22%" />
+<col width="16%" />
+<col width="6%" />
+<col width="25%" />
+</colgroup>
 <thead>
 <tr class="header">
-<th align="left">Week</th>
-<th align="left">Date</th>
-<th align="left">Reading</th>
-<th align="left">Lecture Slides</th>
-<th align="left">Monday Lab</th>
-<th align="left">Wednesday Lab</th>
-<th align="left">Friday Lab</th>
+<th>Week</th>
+<th>Dates</th>
+<th>Lecture 1</th>
+<th>Lecture 2</th>
+<th>Recitation</th>
+<th>Project</th>
+<th>Reading</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td align="left"></td>
-<td align="left">F Jan 25</td>
-<td align="left"></td>
-<td align="left"></td>
-<td align="left"></td>
-<td align="left"></td>
-<td align="left"><a href="https://crumplab.github.io/psyc3400/lab3_rbasics/RBasics.html">1: R Basics</a></td>
+<td>1</td>
+<td>Aug 22 &amp; 24</td>
+<td>Introduction to Statistics</td>
+<td>Data Concepts &amp; Visualization</td>
+<td>Introduction to R, RStudio, and R Markdown</td>
+<td></td>
+<td>Chapter 1 - Why Statistics</td>
 </tr>
 <tr class="even">
-<td align="left">1</td>
-<td align="left">M Jan 28</td>
-<td align="left"><a href="https://crumplab.github.io/statistics/why-statistics.html">Chpt 1</a></td>
-<td align="left"><a href="https://crumplab.github.io/psyc3400/Presentations/1_a_intro.html#1">Intro/Science</a></td>
-<td align="left"><a href="https://crumplab.github.io/psyc3400/lab3_rbasics/RBasics.html">1: R Basics</a></td>
-<td align="left"></td>
-<td align="left"></td>
+<td>2</td>
+<td>Aug 29 &amp; 31</td>
+<td>Graphical Presentation of Data</td>
+<td>Central Tendency and Variance</td>
+<td>Exploring and Visualizing Data in R</td>
+<td></td>
+<td>Chapter 2 - Describing Data</td>
 </tr>
 <tr class="odd">
-<td align="left"></td>
-<td align="left">W Jan 30</td>
-<td align="left"><a href="https://crumplab.github.io/statistics/why-statistics.html">Chpt 1</a></td>
-<td align="left"><a href="https://crumplab.github.io/psyc3400/Presentations/1_b_datavis.html#1">DataVis</a></td>
-<td align="left"></td>
-<td align="left"><a href="https://crumplab.github.io/psyc3400/lab3_rbasics/RBasics.html">1: R Basics</a></td>
-<td align="left"></td>
+<td>3</td>
+<td>Sept 5 &amp; 7</td>
+<td>Descriptives</td>
+<td>Correlation &amp; Types of Variables (Discrete &amp;
+Continuous)</td>
+<td>Probability Simulations in R</td>
+<td>Milestone 1</td>
+<td>Chapter 3 - Correlation</td>
 </tr>
 <tr class="even">
-<td align="left"></td>
-<td align="left">F Feb 1</td>
-<td align="left"></td>
-<td align="left"></td>
-<td align="left"></td>
-<td align="left"></td>
-<td align="left"><a href="https://crumplab.github.io/statisticsLab/lab-1-graphing-data.html">2: Intro/Graphing</a></td>
+<td>4</td>
+<td>Sept 12 &amp; 14</td>
+<td>Probability of Events</td>
+<td>Distributions &amp; The Central Limit Theorem</td>
+<td>Working with Discrete and Continuous Random Variables in R</td>
+<td></td>
+<td>Chapter 4 - Probability, Sampling, and Estimation</td>
 </tr>
 <tr class="odd">
-<td align="left">2</td>
-<td align="left">M Feb 4</td>
-<td align="left"><a href="https://crumplab.github.io/statistics/DescribingData.html">Chpt 2</a></td>
-<td align="left"><a href="https://crumplab.github.io/psyc3400/Presentations/2-Descriptives.html#1">Central Tendency</a></td>
-<td align="left"><a href="https://crumplab.github.io/statisticsLab/lab-1-graphing-data.html">2: Intro/Graphing</a></td>
-<td align="left"></td>
-<td align="left"></td>
+<td>5</td>
+<td>Sept 19 &amp; 21</td>
+<td>T-tests</td>
+<td>Uncertainty Propagation</td>
+<td>Uncertainty Simulations in R</td>
+<td></td>
+<td>Chapter 5 - Foundations for inference &amp; Chapter 6 - T-tests</td>
 </tr>
 <tr class="even">
-<td align="left"></td>
-<td align="left">W Feb 6</td>
-<td align="left"><a href="https://crumplab.github.io/statistics/DescribingData.html">Chpt 2</a></td>
-<td align="left"><a href="https://crumplab.github.io/psyc3400/Presentations/2b_variation.html#1">Variance</a></td>
-<td align="left"></td>
-<td align="left"><a href="https://crumplab.github.io/statisticsLab/lab-1-graphing-data.html">2: Intro/Graphing</a></td>
-<td align="left"></td>
+<td>6</td>
+<td>Sept 26 &amp; 28</td>
+<td>Review and Midterm Exam Prep</td>
+<td>Midterm Exam</td>
+<td>Review</td>
+<td>Milestone 2</td>
+<td>None</td>
 </tr>
 <tr class="odd">
-<td align="left"></td>
-<td align="left">F Feb 8</td>
-<td align="left"></td>
-<td align="left"></td>
-<td align="left"></td>
-<td align="left"></td>
-<td align="left"><a href="https://crumplab.github.io/statisticsLab/lab-2-descriptive-statistics.html">3: Descriptives</a></td>
+<td>7</td>
+<td>Oct 3 &amp; 5</td>
+<td>Introduction to Statistical Inference</td>
+<td>Analysis of Variance (ANOVA)</td>
+<td>ANOVA in R</td>
+<td></td>
+<td>Chapter 7 - ANOVA</td>
 </tr>
 <tr class="even">
-<td align="left"></td>
-<td align="left">M Feb 11</td>
-<td align="left"><a href="https://crumplab.github.io/statistics/Correlation.html">Chpt 3</a></td>
-<td align="left"><a href="https://crumplab.github.io/psyc3400/Presentations/3a_correlation.html#1">Correlation</a></td>
-<td align="left"><a href="https://crumplab.github.io/statisticsLab/lab-2-descriptive-statistics.html">3: Descriptives</a></td>
-<td align="left"></td>
-<td align="left"></td>
+<td>8</td>
+<td>Oct 10 &amp; 12</td>
+<td>Properties of Estimators</td>
+<td>Estimation of Means</td>
+<td>Estimation in R</td>
+<td></td>
+<td>Chapter 8 - Estimators</td>
 </tr>
 <tr class="odd">
-<td align="left">3</td>
-<td align="left">W Feb 13</td>
-<td align="left"><a href="https://crumplab.github.io/statistics/Correlation.html">Chpt 3</a></td>
-<td align="left"><a href="https://crumplab.github.io/psyc3400/Presentations/3b_regression.html#1">Regression</a></td>
-<td align="left"></td>
-<td align="left"><a href="https://crumplab.github.io/statisticsLab/lab-2-descriptive-statistics.html">3: Descriptives</a></td>
-<td align="left"></td>
+<td>9</td>
+<td>Oct 17 &amp; 19</td>
+<td>Estimation of Proportions</td>
+<td>Hypothesis Testing - Logic and Illogic</td>
+<td>Hypothesis Testing in R</td>
+<td></td>
+<td>Chapter 9 - Hypothesis Testing</td>
 </tr>
 <tr class="even">
-<td align="left"></td>
-<td align="left">F Feb 15</td>
-<td align="left"></td>
-<td align="left"></td>
-<td align="left"></td>
-<td align="left"></td>
-<td align="left">Flex</td>
+<td>10</td>
+<td>Oct 24 &amp; 26</td>
+<td>Hypothesis Testing - Means and Proportions</td>
+<td>Statistical Power</td>
+<td>Power and Equivalence Testing in R</td>
+<td></td>
+<td>Chapter 10 - Power</td>
 </tr>
 <tr class="odd">
-<td align="left"></td>
-<td align="left"><strong>M Feb 18</strong></td>
-<td align="left"></td>
-<td align="left"><strong>No Class</strong></td>
-<td align="left"></td>
-<td align="left"></td>
-<td align="left"></td>
+<td>11</td>
+<td>Oct 31 &amp; Nov 2</td>
+<td>Reverse/Equivalence Tests</td>
+<td>Sampling and Sampling Distributions</td>
+<td>Experimental Design in R</td>
+<td>Milestone 3</td>
+<td>Chapter 11 - Experimental Design</td>
 </tr>
 <tr class="even">
-<td align="left"></td>
-<td align="left">W Feb 20</td>
-<td align="left"><a href="https://crumplab.github.io/statistics/probability-sampling-and-estimation.html">Chpt 4</a></td>
-<td align="left"><a href="https://crumplab.github.io/psyc3400/Presentations/4a_Distribution.html#1">Distributions</a></td>
-<td align="left"></td>
-<td align="left"><a href="https://crumplab.github.io/statisticsLab/lab-3-correlation.html">4: Correlation</a></td>
-<td align="left"></td>
+<td>12</td>
+<td>Nov 7 &amp; 9</td>
+<td>Experiments and Quasi-experiments</td>
+<td>Differences in Means and Proportions</td>
+<td>Bivariate Regression in R</td>
+<td></td>
+<td>Chapter 12 - Bivariate and Multivariate regression</td>
 </tr>
 <tr class="odd">
-<td align="left"></td>
-<td align="left">F Feb 22</td>
-<td align="left"></td>
-<td align="left"></td>
-<td align="left"></td>
-<td align="left"></td>
-<td align="left"><a href="https://crumplab.github.io/statisticsLab/lab-3-correlation.html">4: Correlation</a></td>
+<td>13</td>
+<td>Nov 14 &amp; 16</td>
+<td>Correlations &amp; Covariance</td>
+<td>Bivariate Regression Analysis</td>
+<td>Multivariate Regression in R</td>
+<td></td>
+<td>Chapter 12 - Bivariate and Multivariate regression</td>
 </tr>
 <tr class="even">
-<td align="left">4</td>
-<td align="left">M Feb 25</td>
-<td align="left"><a href="https://crumplab.github.io/statistics/probability-sampling-and-estimation.html">Chpt 4</a></td>
-<td align="left"><a href="https://crumplab.github.io/psyc3400/Presentations/4b_Sampling.html#1">Sampling</a></td>
-<td align="left"><a href="https://crumplab.github.io/statisticsLab/lab-3-correlation.html">4: Correlation</a></td>
-<td align="left"></td>
-<td align="left"></td>
+<td></td>
+<td>Nov 21 &amp; 23</td>
+<td>No Classes – Thanksgiving Break</td>
+<td>No Classes – Thanksgiving Break</td>
+<td>No Classes – Thanksgiving Break</td>
+<td></td>
+<td>No Classes – Thanksgiving Break</td>
 </tr>
 <tr class="odd">
-<td align="left"></td>
-<td align="left">W Feb 27</td>
-<td align="left"><a href="https://crumplab.github.io/statistics/foundations-for-inference.html">Chpt 5</a></td>
-<td align="left"><a href="https://crumplab.github.io/psyc3400/Presentations/5a_foundations.html#1">Foundations for inference</a></td>
-<td align="left"></td>
-<td align="left"><a href="https://crumplab.github.io/statisticsLab/lab-4-normal-distribution-central-limit-theorem.html">5: Central Limit Theorem</a></td>
-<td align="left"></td>
+<td>14</td>
+<td>Nov 28 &amp; 30</td>
+<td>Project Presentations</td>
+<td>Multivariate Regression Models</td>
+<td>Project Presentations</td>
+<td>Milestone 4</td>
+<td>Chapter 13 - Thinking about asking questions with Data</td>
 </tr>
 <tr class="even">
-<td align="left"></td>
-<td align="left">F Mar 1</td>
-<td align="left"></td>
-<td align="left"></td>
-<td align="left"></td>
-<td align="left"></td>
-<td align="left"><a href="https://crumplab.github.io/statisticsLab/lab-4-normal-distribution-central-limit-theorem.html">5: Central Limit Theorem</a></td>
+<td>15</td>
+<td>Dec 5 &amp; 7</td>
+<td>Multivariate Regression Models and wrap-up</td>
+<td>Answering questions with messy data</td>
+<td>Final Exam Review</td>
+<td></td>
+<td></td>
 </tr>
 <tr class="odd">
-<td align="left">5</td>
-<td align="left">M Mar 4</td>
-<td align="left"><a href="https://crumplab.github.io/statistics/foundations-for-inference.html">Chpt 5</a></td>
-<td align="left">Missed Class due to snow</td>
-<td align="left"><a href="https://crumplab.github.io/statisticsLab/lab-4-normal-distribution-central-limit-theorem.html">5: Central Limit Theorem</a></td>
-<td align="left"></td>
-<td align="left"></td>
-</tr>
-<tr class="even">
-<td align="left"></td>
-<td align="left">W Mar 6</td>
-<td align="left"><a href="https://crumplab.github.io/statistics/foundations-for-inference.html">Chpt 5</a></td>
-<td align="left"><a href="https://crumplab.github.io/psyc3400/Presentations/5b_randomization.html#1">Randomization test</a></td>
-<td align="left"></td>
-<td align="left"><a href="https://crumplab.github.io/statisticsLab/lab-5-fundamentals-of-hypothesis-testing.html">6. Hypothesis Testing</a></td>
-<td align="left"></td>
-</tr>
-<tr class="odd">
-<td align="left"></td>
-<td align="left">F Mar 8</td>
-<td align="left"></td>
-<td align="left"></td>
-<td align="left"></td>
-<td align="left"></td>
-<td align="left"><a href="https://crumplab.github.io/statisticsLab/lab-5-fundamentals-of-hypothesis-testing.html">6. Hypothesis Testing</a></td>
-</tr>
-<tr class="even">
-<td align="left">6</td>
-<td align="left">M Mar 11</td>
-<td align="left"><a href="https://crumplab.github.io/statistics/t-tests.html">Chpt 6</a></td>
-<td align="left"><a href="https://crumplab.github.io/psyc3400/Presentations/6a_ttest.html#1">one-sample t tests</a></td>
-<td align="left"><a href="https://crumplab.github.io/statisticsLab/lab-5-fundamentals-of-hypothesis-testing.html">6. Hypothesis Testing</a></td>
-<td align="left"></td>
-<td align="left"></td>
-</tr>
-<tr class="odd">
-<td align="left"></td>
-<td align="left">W Mar 13</td>
-<td align="left"><a href="https://crumplab.github.io/statistics/t-tests.html">Chpt 6</a></td>
-<td align="left"><a href="https://crumplab.github.io/psyc3400/Presentations/6b_paired.html#1">paired sample t-tests</a></td>
-<td align="left"></td>
-<td align="left"><a href="https://crumplab.github.io/statisticsLab/lab-6-t-test-one-sample-paired-sample.html">7. T-tests 1</a></td>
-<td align="left"></td>
-</tr>
-<tr class="even">
-<td align="left"></td>
-<td align="left">F Mar 15</td>
-<td align="left"></td>
-<td align="left"></td>
-<td align="left"></td>
-<td align="left"></td>
-<td align="left"><a href="https://crumplab.github.io/statisticsLab/lab-6-t-test-one-sample-paired-sample.html">7. T-tests 1</a></td>
-</tr>
-<tr class="odd">
-<td align="left">7</td>
-<td align="left">M Mar 18</td>
-<td align="left"><a href="https://crumplab.github.io/statistics/t-tests.html">Chpt 6</a></td>
-<td align="left"><a href="https://crumplab.github.io/psyc3400/Presentations/6c_ind.html#1">Independent t-tests</a></td>
-<td align="left"><a href="https://crumplab.github.io/statisticsLab/lab-6-t-test-one-sample-paired-sample.html">7. T-tests 1</a></td>
-<td align="left"></td>
-<td align="left"></td>
-</tr>
-<tr class="even">
-<td align="left"></td>
-<td align="left">W Mar 20</td>
-<td align="left"><a href="https://crumplab.github.io/statistics/thinking-about-answering-questions-with-data.html">Chpt 12</a></td>
-<td align="left"><a href="https://crumplab.github.io/psyc3400/Presentations/6d_power.html#1">Power and Effect-size</a></td>
-<td align="left"></td>
-<td align="left">Midterm Study</td>
-<td align="left"></td>
-</tr>
-<tr class="odd">
-<td align="left"></td>
-<td align="left">F Mar 22</td>
-<td align="left"></td>
-<td align="left"></td>
-<td align="left"></td>
-<td align="left"></td>
-<td align="left">Midterm study</td>
-</tr>
-<tr class="even">
-<td align="left">8</td>
-<td align="left">M Mar 25</td>
-<td align="left"></td>
-<td align="left">Midterm Review</td>
-<td align="left">Midterm Study</td>
-<td align="left"></td>
-<td align="left"></td>
-</tr>
-<tr class="odd">
-<td align="left"></td>
-<td align="left">W Mar 27</td>
-<td align="left"></td>
-<td align="left"><strong>Midterm</strong></td>
-<td align="left"></td>
-<td align="left"><a href="https://crumplab.github.io/statisticsLab/lab-7-t-test-independent-sample.html">8. T-tests 2</a></td>
-<td align="left"></td>
-</tr>
-<tr class="even">
-<td align="left"></td>
-<td align="left">F Mar 29</td>
-<td align="left"></td>
-<td align="left"></td>
-<td align="left"></td>
-<td align="left"></td>
-<td align="left"><a href="https://crumplab.github.io/statisticsLab/lab-7-t-test-independent-sample.html">8. T-tests 2</a></td>
-</tr>
-<tr class="odd">
-<td align="left">9</td>
-<td align="left">M Apr 1</td>
-<td align="left"><a href="https://crumplab.github.io/statistics/anova.html">Chpt 7</a></td>
-<td align="left"><a href="https://crumplab.github.io/psyc3400/Presentations/7a_indANOVA.html#1">One-factor ANOVA I</a></td>
-<td align="left"><a href="https://crumplab.github.io/statisticsLab/lab-7-t-test-independent-sample.html">8. T-tests 2</a></td>
-<td align="left"></td>
-<td align="left"></td>
-</tr>
-<tr class="even">
-<td align="left"></td>
-<td align="left">W Apr 3</td>
-<td align="left"><a href="https://crumplab.github.io/statistics/anova.html">Chpt 7</a></td>
-<td align="left"><a href="https://crumplab.github.io/psyc3400/Presentations/7b_indANOVA.html#1">One-factor ANOVA II</a></td>
-<td align="left"></td>
-<td align="left"><a href="https://crumplab.github.io/statisticsLab/lab-8-one-way-anova.html">9. One-way ANOVA</a></td>
-<td align="left"></td>
-</tr>
-<tr class="odd">
-<td align="left"></td>
-<td align="left">F Apr 5</td>
-<td align="left"></td>
-<td align="left"></td>
-<td align="left"></td>
-<td align="left"></td>
-<td align="left"><a href="https://crumplab.github.io/statisticsLab/lab-8-one-way-anova.html">9. One-way ANOVA</a></td>
-</tr>
-<tr class="even">
-<td align="left">10</td>
-<td align="left">M Apr 8</td>
-<td align="left"><a href="https://crumplab.github.io/statistics/repeated-measures-anova.html">Chpt 8</a></td>
-<td align="left"><a href="https://crumplab.github.io/psyc3400/Presentations/8a_rmANOVA.html#1">Repeated measures ANOVA I</a></td>
-<td align="left"><a href="https://crumplab.github.io/statisticsLab/lab-8-one-way-anova.html">9. One-way ANOVA</a></td>
-<td align="left"></td>
-<td align="left"></td>
-</tr>
-<tr class="odd">
-<td align="left"></td>
-<td align="left">W Apr 10</td>
-<td align="left"><a href="https://crumplab.github.io/statistics/repeated-measures-anova.html">Chpt 8</a></td>
-<td align="left">Repeated measures ANOVA II</td>
-<td align="left"></td>
-<td align="left"><a href="https://crumplab.github.io/statisticsLab/lab-9-repeated-measures-anova.html">10. RM ANOVA</a></td>
-<td align="left"></td>
-</tr>
-<tr class="even">
-<td align="left"></td>
-<td align="left">F Apr 12</td>
-<td align="left"></td>
-<td align="left"></td>
-<td align="left"></td>
-<td align="left"></td>
-<td align="left"><a href="https://crumplab.github.io/statisticsLab/lab-9-repeated-measures-anova.html">10. RM ANOVA</a></td>
-</tr>
-<tr class="odd">
-<td align="left">11</td>
-<td align="left">M Apr 15</td>
-<td align="left"><a href="https://crumplab.github.io/statistics/factorial-anova.html">Chpt 9</a></td>
-<td align="left"><a href="https://crumplab.github.io/psyc3400/Presentations/9a_factorialANOVA.html#1">Factorial ANOVA I</a></td>
-<td align="left"><a href="https://crumplab.github.io/statisticsLab/lab-9-repeated-measures-anova.html">10. RM ANOVA</a></td>
-<td align="left"></td>
-<td align="left"></td>
-</tr>
-<tr class="even">
-<td align="left"></td>
-<td align="left">W Apr 17</td>
-<td align="left"><a href="https://crumplab.github.io/statistics/factorial-anova.html">Chpt 9</a></td>
-<td align="left"><a href="https://crumplab.github.io/psyc3400/Presentations/9a_factorialANOVA.html#1">Factorial ANOVA II</a></td>
-<td align="left"></td>
-<td align="left">Flex</td>
-<td align="left"></td>
-</tr>
-<tr class="odd">
-<td align="left"></td>
-<td align="left">F Apr 19</td>
-<td align="left"></td>
-<td align="left">Spring Recess</td>
-<td align="left"></td>
-<td align="left"></td>
-<td align="left"></td>
-</tr>
-<tr class="even">
-<td align="left"></td>
-<td align="left">M Apr 22</td>
-<td align="left"></td>
-<td align="left">Spring Recess</td>
-<td align="left"></td>
-<td align="left"></td>
-<td align="left"></td>
-</tr>
-<tr class="odd">
-<td align="left"></td>
-<td align="left">W Apr 24</td>
-<td align="left"></td>
-<td align="left">Spring Recess</td>
-<td align="left"></td>
-<td align="left"></td>
-<td align="left"></td>
-</tr>
-<tr class="even">
-<td align="left"></td>
-<td align="left">F Apr 26</td>
-<td align="left"></td>
-<td align="left">Spring Recess</td>
-<td align="left"></td>
-<td align="left"></td>
-<td align="left"></td>
-</tr>
-<tr class="odd">
-<td align="left"></td>
-<td align="left">M Apr 29</td>
-<td align="left"><a href="https://crumplab.github.io/statistics/more-on-factorial-designs.html">Chpt 10</a></td>
-<td align="left"><a href="https://crumplab.github.io/psyc3400/Presentations/9b_factorialANOVA.html#1">Factorial ANOVA III</a></td>
-<td align="left"><a href="https://crumplab.github.io/statisticsLab/lab-10-factorial-anova.html">11. Factorial ANOVA</a></td>
-<td align="left"></td>
-<td align="left"></td>
-</tr>
-<tr class="even">
-<td align="left">13</td>
-<td align="left">W May 1</td>
-<td align="left"><a href="https://crumplab.github.io/statistics/more-on-factorial-designs.html">Chpt 10</a></td>
-<td align="left">Mixed Design ANOVAs</td>
-<td align="left"></td>
-<td align="left"><a href="https://crumplab.github.io/statisticsLab/lab-10-factorial-anova.html">11. Factorial ANOVA</a></td>
-<td align="left"></td>
-</tr>
-<tr class="odd">
-<td align="left"></td>
-<td align="left">F May 3</td>
-<td align="left"></td>
-<td align="left"></td>
-<td align="left"></td>
-<td align="left"></td>
-<td align="left"><a href="https://crumplab.github.io/statisticsLab/lab-10-factorial-anova.html">11. Factorial ANOVA</a></td>
-</tr>
-<tr class="even">
-<td align="left"></td>
-<td align="left">M May 6</td>
-<td align="left"><a href="https://crumplab.github.io/statistics/more-on-factorial-designs.html">Chpt 10</a></td>
-<td align="left"><a href="https://crumplab.github.io/statistics/more-on-factorial-designs.html">Chpt 10</a></td>
-<td align="left"><a href="https://crumplab.github.io/statisticsLab/lab-11-mixed-factorial-anova.html">12. Mixed ANOVA</a></td>
-<td align="left"></td>
-<td align="left"></td>
-</tr>
-<tr class="odd">
-<td align="left">14</td>
-<td align="left">W May 8</td>
-<td align="left"></td>
-<td align="left"><a href="https://crumplab.github.io/psyc3400/Presentations/10b_Rstuff.html#1">R Markdown</a></td>
-<td align="left"></td>
-<td align="left"><a href="https://crumplab.github.io/statisticsLab/lab-11-mixed-factorial-anova.html">12. Mixed ANOVA</a></td>
-<td align="left"></td>
-</tr>
-<tr class="even">
-<td align="left"></td>
-<td align="left">F May 10</td>
-<td align="left"></td>
-<td align="left"></td>
-<td align="left"></td>
-<td align="left"></td>
-<td align="left"><a href="https://crumplab.github.io/statisticsLab/lab-11-mixed-factorial-anova.html">12. Mixed ANOVA</a></td>
-</tr>
-<tr class="odd">
-<td align="left"></td>
-<td align="left">M May 13</td>
-<td align="left"></td>
-<td align="left">Reproducible Science</td>
-<td align="left"><a href="https://crumplab.github.io/statisticsLab/lab-4-normal-distribution-central-limit-theorem.html">5: Central Limit Theorem</a></td>
-<td align="left"></td>
-<td align="left"></td>
-</tr>
-<tr class="even">
-<td align="left"></td>
-<td align="left">W May 15</td>
-<td align="left"></td>
-<td align="left">Final Review</td>
-<td align="left">flex</td>
-<td align="left"></td>
-<td align="left"></td>
-</tr>
-<tr class="odd">
-<td align="left"></td>
-<td align="left">M May 20</td>
-<td align="left">M May 20 10:30AM - 12:30 PM</td>
-<td align="left">Final Exam</td>
-<td align="left"></td>
-<td align="left"></td>
-<td align="left"></td>
+<td>16</td>
+<td>Finals Week</td>
+<td>Final Exam</td>
+<td>N/A</td>
+<td>N/A</td>
+<td></td>
+<td>Final Exam: Thursday Dec 14th from 12:40-2:40pm</td>
 </tr>
 </tbody>
 </table>
-<p>Website: <a href="http://crumplab.github.io/psyc3400">http://crumplab.github.io/psyc3400</a></p>
-<hr />
-</div>
-<div id="catalog-description" class="section level3">
-<h3>Catalog Description</h3>
-<p>2 hours lecture, 4 hours laboratory, 4 credits</p>
-<p>Basic descriptive and inferential statistics including the elements of experimental designs in psychological research. STEM variant course - Satisfies Pathways Required Core Math and Quantitative Reasoning requirement.</p>
-</div>
-<div id="course-objectives" class="section level3">
-<h3>Course Objectives</h3>
-<p>My goal is for you to learn:</p>
-<ol style="list-style-type: decimal">
-<li><p>How to answer research questions in Psychology with data</p></li>
-<li><p>The basics of research designs in psychology, and how they relate to data-analysis strategies</p></li>
-<li><p>an intuitive, practical, and conceptual understanding of strategies for asking and answering questions with data</p></li>
-<li><p>How to use R, a free and open-source statistics software program.</p></li>
-</ol>
-<p>NOTE: The schedule and procedures described in this syllabus are subject to change in the event of extenuating circumstances. You will always be notified of changes both in class AND by posts to the class website. Your enrollment in the course represents your acknowledgment and acceptance of the non-negotiable policies described in the syllabus.</p>
-<hr />
-</div>
-<div id="textbook-free" class="section level3">
-<h3>Textbook (FREE)</h3>
-<p>The textbook for this course is <a href="https://crumplab.github.io/statistics/">“Answering questions with Data”</a>, it is FREE and available online as a web-book.</p>
-<p>The <a href="https://crumplab.github.io/statisticsLab/">lab manual</a> for this course is also free, and is available online as a web-book.</p>
-<hr />
-</div>
-<div id="additional-resources" class="section level3">
-<h3>Additional resources</h3>
-<p>Supplementary material will be posted on the course website. For example, check out the <a href="https://crumplab.github.io/psyc3400/Resources.html">resources page</a> on this website.</p>
-<hr />
-</div>
-<div id="course-structure" class="section level3">
-<h3>Course Structure:</h3>
-<div id="the-lecture" class="section level4">
-<h4>The Lecture</h4>
-<p>There will be two, 1 hour 15 minute, lectures each week. The lecture covers material that is available in the text book. The course schedule outlines chapters that <strong>should be read prior to each lecture</strong>. It is very important to read the textbook before you come to lecture. I’ve said it twice, now again. <strong>Read the assigned parts of the textbook before each lecture</strong>. Read it at home, read it on the bus, read it in a tree, read it at the library. Just read it.</p>
-<p>You will be tested on material from the lectures and textbook in two exams: a midterm, and a cumulative final exam.</p>
-</div>
-<div id="the-lab" class="section level4">
-<h4>The Lab</h4>
-<p>There will be one two hour lab each week (1 hour 50 minutes). Every week you will be completing a structured set of activities that we have planned for you in the <a href="https://crumplab.github.io/statisticsLab/">lab manual</a>. This is where you will spend time learning how to use computer software, in particular R, and R-studio, to do statistics on real data.</p>
-<hr />
-</div>
-</div>
-<div id="grading-total-of-100" class="section level3">
-<h3>Grading (total of 100)</h3>
-<p>Your final grade combines your performance in the lab and lecture portions of the course. The percentage grade is determined from the following components.</p>
-<table>
-<thead>
-<tr class="header">
-<th align="left">Type</th>
-<th align="left">Percentage</th>
-<th align="right">Proportion</th>
-<th align="right">Points</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td align="left">Lab Work</td>
-<td align="left">40%</td>
-<td align="right">0.40</td>
-<td align="right">40</td>
-</tr>
-<tr class="even">
-<td align="left">Weekly Quizzes</td>
-<td align="left">25%</td>
-<td align="right">0.25</td>
-<td align="right">25</td>
-</tr>
-<tr class="odd">
-<td align="left">Midterm</td>
-<td align="left">10%</td>
-<td align="right">0.10</td>
-<td align="right">10</td>
-</tr>
-<tr class="even">
-<td align="left">Final</td>
-<td align="left">25%</td>
-<td align="right">0.25</td>
-<td align="right">25</td>
-</tr>
-<tr class="odd">
-<td align="left">Total</td>
-<td align="left">100%</td>
-<td align="right">1.00</td>
-<td align="right">100</td>
-</tr>
-</tbody>
-</table>
-<p>Percentage grades are converted to letter grades according to the following rubric.</p>
-<table>
-<thead>
-<tr class="header">
-<th align="left">Letter grade</th>
-<th align="left">Range</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td align="left">F</td>
-<td align="left">0-59.99</td>
-</tr>
-<tr class="even">
-<td align="left">D-</td>
-<td align="left">60-63.32</td>
-</tr>
-<tr class="odd">
-<td align="left">D</td>
-<td align="left">63.33-66.66</td>
-</tr>
-<tr class="even">
-<td align="left">D+</td>
-<td align="left">66.67-69.99</td>
-</tr>
-<tr class="odd">
-<td align="left">C-</td>
-<td align="left">70-72.99</td>
-</tr>
-<tr class="even">
-<td align="left">C</td>
-<td align="left">73-76.66</td>
-</tr>
-<tr class="odd">
-<td align="left">C+</td>
-<td align="left">76.67-79.99</td>
-</tr>
-<tr class="even">
-<td align="left">B-</td>
-<td align="left">80-83.32</td>
-</tr>
-<tr class="odd">
-<td align="left">B</td>
-<td align="left">83.33-86.66</td>
-</tr>
-<tr class="even">
-<td align="left">B+</td>
-<td align="left">86.67-89.99</td>
-</tr>
-<tr class="odd">
-<td align="left">A-</td>
-<td align="left">90-93.32</td>
-</tr>
-<tr class="even">
-<td align="left">A</td>
-<td align="left">93.33-96.66</td>
-</tr>
-<tr class="odd">
-<td align="left">A+</td>
-<td align="left">96.67-100</td>
-</tr>
-</tbody>
-</table>
-<p>The course allows for some flexibility in determining your final grade. If you perform better on the final exam than on the midterm, you may replace the midterm grade with your higher final grade (the reverse does not apply).</p>
-<p>The instructor reserves the right to determine whether the final grade depends more heavily on a scale or a curve.</p>
-<hr />
-<div id="lab-work-40" class="section level4">
-<h4>Lab Work (40%)</h4>
-<p>As you can see, your lab work takes up 40% of your entire grade. Compared to everything else, this is the single biggest part of your entire grade. There are 11 graded labs.</p>
-<p>The lab work for each week is split up into three parts. Your grade for each lab will be broken down as follows (4 total points for each lab).</p>
-<p>The whole point of the labs is <strong>to train you how to do things</strong>. You will notice that half of the lab is pass/fail, you just have to show up and follow along, and hand in your work to get half of the grade. The third part is graded, but you will see why in a moment, we’re giving you practice for the kinds of the questions you will see on the midterm and final.</p>
-<p><strong>Part 1. Learn</strong> 1 point</p>
 <ul>
-<li><p>Part 1 grading is pass/fail:</p>
-<ol style="list-style-type: lower-alpha">
-<li>Pass = you must attend lab, and hand in your assignment with a completed part 1</li>
-<li>Fail = you don’t attend lab; or you do, but you don’t hand in your assignment.</li>
-</ol></li>
-<li><p>Part 1 activities: You will follow the step-by-step instructions in the lab manual to complete data analysis tasks using R. Don’t worry this is actually pretty easy, we are mainly asking you to copy/paste things and press enter.</p></li>
+<li>The above schedule is subject to limited changes in the event of
+extenuating circumstances.</li>
 </ul>
-<p><strong>Part 2. Generalize</strong> 1 point</p>
-<ul>
-<li><p>Part 2 grading is pass/fail:</p>
-<ol style="list-style-type: lower-alpha">
-<li>Pass = you must attend lab, and hand in your assignment with your part 2 attempt</li>
-<li>Fail = you don’t attend lab; or you do, but you don’t hand in your assignment.</li>
-</ol></li>
-<li><p>Part 2 activities: After you see how we did something in Part 1, you try to do something very similar in part 2. You will show your work in a file that we give you. You may or may not be able to successfully complete the generalization assignment. That is OK. You will pa</p></li>
-</ul>
-<p><strong>Part 3. Think and write</strong> 2 points</p>
-<p>The third part of each lab will have some questions that require written answers. Your answers to these questions will be graded by your TA, who will give you feedback on your answers.</p>
-<p>Each question will come with a clear rubric about how the question will be graded.</p>
-<!--
-**Group work** is possible for part 3. If you want to form a group other students for part 3, then you can do this. You can work together to come up with a written answer to the question(s) in part 3. If you write as a group, then you MUST hand-in as a group. That means everybody in the group hands in the "exact" same written work to the question, and everybody in the group will get the exact same grade for the question.
-
-**IMPORTANT: Part 3 of the labs will prepare you for the Midterm and Final**. Half of the midterm and half of the final involve writing. In fact, some of the long answer questions on the midterm and final will be taken from your labs, so you will already have had practice thinking about the questions. However, the **midterm and final** are **individual** assignments, so if you do group work in lab, make sure you are prepared to give answers individually for the midterm and final.
-
--->
 <hr />
-</div>
-<div id="weekly-quizzes-25" class="section level4">
-<h4>Weekly Quizzes (25%)</h4>
-<p>Each week you will be given an online quiz on Blackboard. It will typically be around 10 questions about the material for that week. Here are some things you should know about the quizzes:</p>
-<ol style="list-style-type: decimal">
-<li><p>You will have the entire week to complete the quiz, and <strong>you will be able to take the quiz over and over as many times as you want.</strong></p></li>
-<li><p>Your grade on the quiz will always be taken from the last attempt.</p></li>
-<li><p>Many of the quiz questions, or very similar ones, will be on the midterm and the final. The purpose of the quizzes is to give you practice with the kinds of questions that will be on the midterm and final. If you are wondering what kinds of questions are going to be on the midterm and final, <strong>you will find out by taking the quizzes</strong>.</p></li>
-</ol>
-<hr />
-</div>
-<div id="midterm-10-and-final-exam-cumulative-25" class="section level4">
-<h4>Midterm (10%) and Final Exam (Cumulative 25%)</h4>
-<p>Everyone has questions about the midterm and final. Here are the answers to all of your questions. You already know the midterm is worth 20% of your final grade, and your final exam is worth 25% of the final grade.</p>
-<p><strong>Q. What’s on the exams?</strong> A: the midterm and final have the same structure. Half of each exam is multiple choice questions, the other half is long-answer questions</p>
-<p><strong>Q. What kind of multiple choice questions, I need examples…</strong> A: All of the MC questions on the midterm and final will be like the ones in your weekly quizzes, which you can do over and over again. Yes, some of the midterm and final questions will be very similar (or even identical except for slightly different values) to the ones from the quizzes</p>
-<p><strong>Q. What kind of long-answer questions, I need examples and feedback</strong>: The long-answer questions will be very similar, and sometimes the same as the long-answers you write for Part 3 of each lab. You will get feedback from the lab instructor each week about your answers to those questions. In general you will have about 6-7 weeks of feedback on your answers before you take the exams.</p>
-<p><strong>Q. Is the final cumulative</strong>? A: Yes, but it contains more things from the second half of the semester, roughly 75% second half things, and 25% first half things.</p>
-<p><strong>Q. Is there some deal about the final and midterm, is this true?</strong> A: Yes, if you perform better on the final exam than on the midterm, I will automatically replace your midterm grade with your higher final grade. Let’s say you got 75% on the midterm and 85% on the final. I will then automatically give you 85% on both the midterm and final. However, the reverse does not apply. If you got 85% on the midterm, and 75% on the final, you will receive those grades with no changes.</p>
-<hr />
-</div>
-</div>
-<div id="attendance" class="section level3">
-<h3>Attendance</h3>
-<p>Lecture and Lab attendance is taken every lecture and lab.</p>
-<p><strong>You will LOSE points on your quizzes and lab assignments for NOT ATTENDING LECTURE AND LAB</strong>.</p>
-<div id="lecture-attendance-policy" class="section level4">
-<h4>LECTURE ATTENDANCE POLICY</h4>
-<p>If a student is late or misses more than 3 classes, then each additional late/missed class will result in subtracting 1% from the 25% for the Weekly quizzes. We know that life happens and sometimes you can’t make it to class. We are giving you you three classes where you can miss (because of things happening in your life that we don’t need to know about) without having any impact on your grade (all lecture notes are online for missed classes, talk to a friend, read the textbook, etc.)</p>
-<p>Lecture attendance is taken every lecture at the very beginning of class. Latecomers who miss attendance will not be allowed to record their attendance, and will be recorded as absent.</p>
-</div>
-<div id="lab-attendance-policy" class="section level4">
-<h4>LAB ATTENDANCE POLICY</h4>
-<ul>
-<li>Lab attendance is mandatory.</li>
-<li>Each student is given one unexcused lab absence with no penalty as long as your lab is submitted on time. If you need to miss additional labs, please speak to your lab instructor and provide documentation regarding the reason you have to miss.</li>
-<li>If you miss more than one unexcused lab, you are still encouraged to hand your lab in and will receive up to 2 (rather than the usual 4) points.</li>
-<li>Labs for which no lab is handed in will receive a 0.</li>
-</ul>
-<p><strong>Late Labs:</strong> Unless you have contacted your lab instructor regarding serious extenuating circumstances, there will be a penalty of .25 per day up to a total of 2 points for late labs. This means that it is in your best interests to complete the lab, even late, as you can still receive up to 2 points (50% of the grade). However, no lab reports will be accepted after three weeks beyond the due date. Labs not submitted by three weeks past the due date will receive a zero.</p>
-<hr />
-</div>
-</div>
-<div id="universitys-policy-on-academic-integrity" class="section level3">
-<h3>University’s policy on Academic Integrity</h3>
-<p>The faculty and administration of Brooklyn College support an environment free from cheating and plagiarism. As a student, <strong>you are personally responsible for being aware of what constitutes cheating, and plagiarism; and, for avoiding both</strong>. You can view the complete text of the CUNY Academic Integrity Policy here: <a href="http://www.brooklyn.cuny.edu/bc/policies">http://www.brooklyn.cuny.edu/bc/policies</a> <strong>If a faculty member suspects a violation of academic integrity, and upon investigation, confirms that violation, or if the student admits the violation, the faculty member MUST report the violation</strong>.</p>
-<hr />
-</div>
-<div id="missing-an-exam-or-class" class="section level3">
-<h3>Missing an Exam or class</h3>
-<p>Make-up exams will be given only when there is a “good” reason for having missed an exam. For example, if a sudden illness causes you to miss an exam, then you should be prepared to provide me with a brief note signed by your physician. Contact me before an exam in the event that you anticipate missing one. In the event of an emergency, contact me as soon as possible. If you are missing a class for religious reasons refer to the state law regarding non-attendance because of religious beliefs (p. 64 in the Undergraduate Bulletin or p. 40 of the Graduate Bulletin).</p>
-<p>WARNING: This is not the kind of course for which you do not need to come to class, and read the textbook at the last minute and expect to do well on tests and papers. The material in this course builds in complexity across classes, and doing well in this course will require a constant moderate level of effort. If you join the course later or are unsure about anything please ask.</p>
-<hr />
-</div>
-<div id="accessibility" class="section level3">
-<h3>Accessibility</h3>
-<p>It is important to me that the course be accessible to all students. In order to receive disability-related academic accommodations students must first be registered with the Center for Student Disability Services. Students who have a documented disability or suspect they may have a disability are invited to set up an appointment with the Director of the Center for Student Disability Services, Ms. Valerie Stewart-Lovell at 718-951-5538. If you have already registered with the Center for Student Disability Services please provide me with the course accommodation form so we may discuss your specific accommodation. A guide and more information can be found here <a href="http://catsweb.cuny.edu">http://catsweb.cuny.edu</a></p>
-<hr />
-</div>
-<div id="class-citizenshiprules-of-conduct" class="section level3">
-<h3>Class Citizenship/Rules of Conduct</h3>
-<div id="cell-phones" class="section level4">
-<h4>Cell phones</h4>
-<p>Your cell phone, PDA or other device must be turned off during class. If you are a habitual offender in this respect (i.e. it happens more than twice during the semester), you will be asked to leave the classroom. If you absolutely need to have your phone on during class—talk to me at the beginning of the semester.</p>
-</div>
-<div id="keep-the-room-clean" class="section level4">
-<h4>Keep the room clean</h4>
-<p>Please pick up after yourself. Absolutely no food is allowed in the lecture and lab rooms.</p>
-<hr />
-</div>
-</div>
-<div id="email-correspondence" class="section level3">
-<h3>Email Correspondence</h3>
-<p>I will regularly use e-mail to send out announcements, changes in the syllabus, reminders about tests or due dates etc. It is your responsibility to check e-mail regularly to keep up-to-date with these announcements. I will use the e-mail address you have listed with the College. Therefore, please make sure that this is indeed the correct address.</p>
-<div id="general-help-with-research-and-writing" class="section level4">
-<h4>General Help with Research and Writing</h4>
-<p>The Library maintains a collection of links to sites that can assist you with proper citation format and paraphrasing and quoting other authors at <a href="https://library.brooklyn.cuny.edu/resources/?service=research-help">Research &amp; Writing Help</a>. The Learning Center has writing tutors available to help you with your writing <a href="http://lc.brooklyn.cuny.edu/">http://lc.brooklyn.cuny.edu/</a>.</p>
-<p>The best learning is done in conversation with others, whether they are people—classmates, teachers, friends—or texts—books, articles, essays, poems, films etc. It should not be a solitary process. However, the assignments that you hand in for this course must be done on your own, should represent your own thinking, and should be original work that you have done for this particular course. A good way to balance these two seemingly contradictory approaches (collaborative learning and original individually-produced work) without knowingly—or, even unwittingly—resorting to plagiarism or other forms of academic misconduct is to learn and meticulously observe the rules for citing the work of others (this could be the great point your roommate made that you used in your paper, it could be a well-turned phrase from an academic essay, or it could be anything in between). It is your responsibility to learn what constitutes plagiarism and the correct rules for citing sources—read the information on the following website carefully: <a href="http://www.brooklyn.cuny.edu/bc/policies/">http://www.brooklyn.cuny.edu/bc/policies/</a>. The bottom line is: passing off anyone’s words or ideas as your own for any reason whatsoever is plagiarism.</p>
+<div id="summary-of-important-dates" class="section level2">
+<h2>Summary of Important Dates</h2>
+<p>Refer to the separate project document for detailed milestones,
+including the dates of the project proposal, hypothesis formation,
+advanced data analysis, peer review, and the final report. The key exam
+dates are as follows: - Midterm Exam – Thursday, September 28th,
+1:15-2:30 pm (during normal class time, in the normal classroom) - Final
+Exam – Thursday, December 14th, 12:40-2:40 p.m. (in the normal
+classroom, PVA201).</p>
 </div>
 </div>
 
 
 
-</div>
-</div>
 
 </div>
 
@@ -1304,7 +775,7 @@ div.tocify {
 
 // add bootstrap table styles to pandoc tables
 function bootstrapStylePandocTables() {
-  $('tr.header').parent('thead').parent('table').addClass('table table-condensed');
+  $('tr.odd').parent('tbody').parent('table').addClass('table table-condensed');
 }
 $(document).ready(function () {
   bootstrapStylePandocTables();
@@ -1322,39 +793,13 @@ $(document).ready(function () {
 
 $(document).ready(function () {
   $('.tabset-dropdown > .nav-tabs > li').click(function () {
-    $(this).parent().toggleClass('nav-tabs-open')
+    $(this).parent().toggleClass('nav-tabs-open');
   });
 });
 </script>
 
 <!-- code folding -->
 
-<script>
-$(document).ready(function ()  {
-
-    // move toc-ignore selectors from section div to header
-    $('div.section.toc-ignore')
-        .removeClass('toc-ignore')
-        .children('h1,h2,h3,h4,h5').addClass('toc-ignore');
-
-    // establish options
-    var options = {
-      selectors: "h1,h2,h3,h4",
-      theme: "bootstrap3",
-      context: '.toc-content',
-      hashGenerator: function (text) {
-        return text.replace(/[.\\/?&!#<>]/g, '').replace(/\s/g, '_').toLowerCase();
-      },
-      ignoreSelector: ".toc-ignore",
-      scrollTo: 0
-    };
-    options.showAndHide = true;
-    options.smoothScroll = true;
-
-    // tocify
-    var toc = $("#TOC").tocify(options).data("toc-tocify");
-});
-</script>
 
 <!-- dynamically load mathjax for compatibility with self-contained -->
 <script>
