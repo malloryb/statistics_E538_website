@@ -1,5 +1,5 @@
 ---
-title: "Psyc 3400"
+title: "SPEA-E538"
 output: html_document
 ---
 
