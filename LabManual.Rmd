@@ -23,18 +23,21 @@ output: html_document
 
 Every week you will participate in a statistics lab. Here you will learn how to use R and R-studio to solve problems in statistics. You will be following the exercises in this lab manual.
 
-[Psyc 3400 Lab Manual](https://crumplab.github.io/statisticsLab/).
+Every week you will participate in a statistics lab. Here you will learn how to use R and R-studio to solve problems in statistics. You will be following the exercises in this lab manual.
 
-The web address is [https://crumplab.github.io/statisticsLab/](https://crumplab.github.io/statisticsLab/).
+[SPEA-E538 Lab Manual](https://malloryb.github.io/statisticsLab_E538/).
+
+The web address is [https://malloryb.github.io/statisticsLab_E538/](https://malloryb.github.io/statisticsLab_E538/).
 
 The lab manual is on the web, so you can look at what you are going to do each week any time you want!
 
-NOTE: You will be using the R sections of the lab manual, not the Excel, SPSS, or JAMOVI sections. However, if you are curious you can go ahead and learn how to solve statistics problems in those software packages as well.
+This is again, based on the lab manual for undergraduates by Matthew Crump, which can be found at [https://crumplab.github.io/statisticsLab/](https://crumplab.github.io/statisticsLab/). 
+
 
 </div>
 <div class="col-sm-6">
 
-<a href="https://crumplab.github.io/statisticsLab/">
+<a href="https://malloryb.github.io/statisticsLab_E538/">
 ```{r statsLabManual, out.width=300, echo=F}
 knitr::include_graphics("images/LabmanualCover.png")
 ```

@@ -26,22 +26,22 @@ output: html_document
 #### Mallory Barnes
 Last updated: `r Sys.Date()`
 
-All resources are completely **free and open**, including the [textbook](https://malloryb.github.io/statistics_E538/), and [lab manual](https://crumplab.github.io/statisticsLab/).
+All resources are completely **free and open**, including the [textbook](https://malloryb.github.io/statistics_E538/), and [lab manual](https://malloryb.github.io/statisticsLab_E538/).
 
 ### Copying/Adopting these Resources
 
-This website is composed using R Markdown. The original source code can be found [here](https://github.com/CrumpLab/psyc3400). For anyone interested in utilizing these resources, the idea is to fork the repos for the [website](https://github.com/CrumpLab/psyc3400), the [original textbook](https://github.com/CrumpLab/statistics), and the [lab manual](https://github.com/CrumpLab/statisticsLab). Afterwards, feel free to modify them according to your own requirements.
+This website is composed using R Markdown. The customized source code can be found [here](https://malloryb.github.io/statistics_E538_website/). For the original materials by Crump, please find the repos for the [website](https://github.com/CrumpLab/psyc3400), the [original textbook](https://github.com/CrumpLab/statistics), and the [lab manual](https://github.com/CrumpLab/statisticsLab). Feel free to modify them according to your own requirements.
 
 </div>
 <div class="col-sm-6">
 
-<a href="https://crumplab.github.io/statistics/">
+<a href="https://malloryb.github.io/statistics_E538/">
 ```{r statsTextbook, out.width=200, echo=F}
 knitr::include_graphics("images/TextbookCover.png")
 ```
 </a>
 
-<a href="https://crumplab.github.io/statisticsLab/">
+<a href="https://malloryb.github.io/statisticsLab_E538/">
 ```{r statsLabManual, out.width=200, echo=F}
 knitr::include_graphics("images/LabmanualCover.png")
 ```
