@@ -3,14 +3,7 @@ title: "Repeated measures ANOVA"
 subtitle: "Within-subjects designs"
 author: "Matthew Crump"
 date: "2018/07/20 (updated: `r Sys.Date()`)"
-output:
-  xaringan::moon_reader:
-    css: ["defaultb.css", "metropolisb.css", "metropolis-fontsb.css"]
-    lib_dir: libs
-    nature:
-      highlightStyle: github
-      highlightLines: true
-      countIncrementalSlides: false
+output: powerpoint_presentation
 ---
 
 ```{r setup, include=FALSE, echo=FALSE}

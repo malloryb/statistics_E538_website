@@ -1,0 +1,13 @@
+---
+title: "Test_knit_to_ppt"
+author: "Mallory Barnes"
+date: "2018/07/20 (updated: `r Sys.Date()`)"
+output:
+  powerpoint_presentation:
+  
+---
+# Section header (Slide 2)
+
+## Section header (Slide 3)
+
+### Slide Title (Slide 4)

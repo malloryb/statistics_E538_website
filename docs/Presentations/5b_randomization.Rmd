@@ -1,25 +1,15 @@
 ---
 title: "Randomization Tests"
-subtitle: "and little bit of hypothesis testing"
-author: "Matthew Crump"
-date: "2018/07/20 (updated: `r Sys.Date()`)"
-output:
-  xaringan::moon_reader:
-    css: ["defaultb.css", "metropolisb.css", "metropolis-fontsb.css"]
-    lib_dir: libs
-    nature:
-      highlightStyle: github
-      highlightLines: true
-      countIncrementalSlides: false
+subtitle: "and a little bit of hypothesis testing"
+output: powerpoint_presentation
 ---
+
 
 ```{r setup, include=FALSE, echo=FALSE}
 options(htmltools.dir.version = FALSE)
 knitr::opts_chunk$set(echo = FALSE,message=FALSE,warning=FALSE, cache = TRUE,
                       comment=NA)
 ```
-
-
 
 # Topics for class
 
