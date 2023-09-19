@@ -3,14 +3,7 @@ title: "Foundations for statistical inference"
 subtitle: "whodunnit?"
 author: "Matthew Crump"
 date: "2018/07/20 (updated: `r Sys.Date()`)"
-output:
-  xaringan::moon_reader:
-    css: ["defaultb.css", "metropolisb.css", "metropolis-fontsb.css"]
-    lib_dir: libs
-    nature:
-      highlightStyle: github
-      highlightLines: true
-      countIncrementalSlides: false
+output: powerpoint_presentation
 ---
 
 ```{r setup, include=FALSE, echo=FALSE}
@@ -236,12 +229,6 @@ Answer: We find out the range of differences that chance can produce, then we co
 
 ---
 
-class: pink, center, middle, clear
-
-# The Crump Test
-
----
-
 # The Crump Test
 
 - A made up test to illustrate the process of statistical inference
@@ -294,7 +281,6 @@ There is no objective line defining rare events. You need to pick one you are co
 Let's pick 1/10,000
 
 We are saying that if an event happens once in 10,000 times, it is a rare event.
-
 ---
 
 # Textbook Example
@@ -318,8 +304,8 @@ dist_mean  <- 100
 dist_sd    <- 20
 ```
 
-
 ---
+
 # run simulation
 
 ```{r, echo=T}
@@ -476,11 +462,4 @@ max(mean_differences)
 
 ---
 
-# Reminder
-
-1. Quiz 4 is due today Tuesday, October, 2nd end of day (11:59pm).
-
-2. Quiz 5 for Inference will be posted tonight.
-
----
 
